@@ -16,6 +16,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
+
   # ------------------------
   # REVERSE PROXY (TRAEFIK)
   # ------------------------
@@ -76,13 +77,12 @@ services:
     env_file:
       - ${ENV_FILE}
     volumes:
-      - /data/report/uploads:/data/report/uploads
+      - /var/lib/hire/uploads:/app/uploads
+      - /var/log/hire/core:app/logs
     depends_on:
       - postgres
       - redis
     labels:
-
-
       - "traefik.enable=true"
       - "com.centurylinklabs.watchtower.enable=true"
       - "traefik.http.routers.core.rule=Host(`api.hire-test.cloud`)"
@@ -100,7 +100,8 @@ services:
     env_file:
       - ${ENV_FILE}
     volumes:
-      - /data/report/uploads:/data/report/uploads
+    -  /var/lib/hire/uploads:/app/uploads
+      - /var/log/hire/report:/app/logs
     depends_on:
       - postgres
       - redis
