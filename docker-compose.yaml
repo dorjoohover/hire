@@ -68,7 +68,6 @@ services:
       - redis
     labels:
       - "traefik.enable=true"
-      - "com.centurylinklabs.watchtower.enable=true"
       - "traefik.http.routers.core.rule=Host(`api.hire-test.cloud`)"
       - "traefik.http.routers.core.entrypoints=websecure"
       - "traefik.http.routers.core.tls.certresolver=myresolver"
@@ -91,7 +90,6 @@ services:
       - redis
     labels:
       - "traefik.enable=true"
-      - "com.centurylinklabs.watchtower.enable=true"
       - "traefik.http.routers.report.rule=Host(`report.hire-test.cloud`)"
       - "traefik.http.routers.report.entrypoints=websecure"
       - "traefik.http.routers.report.tls.certresolver=myresolver"
@@ -114,6 +112,7 @@ services:
       - ${ENV_FILE}
 
     labels:
+      - "traefik.enable=true"
       - "traefik.http.routers.admin.rule=Host(`admin.hire-test.cloud`)"
       - "traefik.http.routers.admin.entrypoints=websecure"
       - "traefik.http.routers.admin.tls.certresolver=myresolver"
