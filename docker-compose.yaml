@@ -75,7 +75,6 @@ services:
     restart: always
     env_file:
       - ${ENV_FILE}
-
     volumes:
       - /data/report/uploads:/data/report/uploads
     depends_on:
@@ -117,8 +116,6 @@ services:
     restart: always
     env_file:
       - ${ENV_FILE}
-    environment:
-      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.web.rule=Host(`hire-test.cloud`)"
@@ -130,8 +127,7 @@ services:
     restart: always
     env_file:
       - ${ENV_FILE}
-    environment:
-      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
+
     labels:
       - "traefik.http.routers.admin.rule=Host(`admin.hire-test.cloud`)"
       - "traefik.http.routers.admin.entrypoints=websecure"
