@@ -1,19 +1,4 @@
 services:
-  # ------------------------
-  # AUTO UPDATE (WATCHTOWER)
-  # ------------------------
-  watchtower:
-    image: ghcr.io/containrrr/watchtower:1.7.1
-    restart: always
-    command:
-      - "--label-enable"
-      - "--interval"
-      - "300"            # 5 минут тутам
-      - "--cleanup"
-      - "--rolling-restart"
-      - "--include-restarting"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
 
 
   # ------------------------
