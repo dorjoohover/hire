@@ -100,7 +100,7 @@ services:
     env_file:
       - ${ENV_FILE}
     volumes:
-    -  /var/lib/hire/uploads:/app/uploads:rw
+      - /var/lib/hire/uploads:/app/uploads:rw
       - /var/log/hire/report:/app/logs:rw
     depends_on:
       - postgres
