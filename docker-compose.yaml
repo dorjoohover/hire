@@ -77,8 +77,8 @@ services:
     env_file:
       - ${ENV_FILE}
     volumes:
-      - /var/lib/hire/uploads:/app/uploads
-      - /var/log/hire/core:app/logs
+      - /var/lib/hire/uploads:/app/uploads:rw
+      - /var/log/hire/core:/app/logs:rw
     depends_on:
       - postgres
       - redis
@@ -100,8 +100,8 @@ services:
     env_file:
       - ${ENV_FILE}
     volumes:
-    -  /var/lib/hire/uploads:/app/uploads
-      - /var/log/hire/report:/app/logs
+    -  /var/lib/hire/uploads:/app/uploads:rw
+      - /var/log/hire/report:/app/logs:rw
     depends_on:
       - postgres
       - redis
