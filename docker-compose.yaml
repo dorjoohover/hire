@@ -70,7 +70,6 @@ services:
   # CORE BACKEND
   # ------------------------
   core:
-    build: ./core  
     image: ghcr.io/dorjoohover/hire_backend_core:dev
     restart: always
     env_file:
@@ -102,26 +101,20 @@ services:
       - postgres
       - redis
     labels:
+
+
       - "traefik.enable=true"
       - "com.centurylinklabs.watchtower.enable=true"
-
-      # ROUTER
       - "traefik.http.routers.core.rule=Host(`api.hire-test.cloud`)"
       - "traefik.http.routers.core.entrypoints=websecure"
       - "traefik.http.routers.core.tls.certresolver=myresolver"
-      - "traefik.http.routers.core.middlewares=core-strip"
-
-      # STRIP /api  ->  /
-      - "traefik.http.middlewares.core-strip.stripprefix.prefixes=/api"
-
-      # SERVICE
       - "traefik.http.services.core.loadbalancer.server.port=5000"
+
 
   # ------------------------
   # REPORT BACKEND
   # ------------------------
   report:
-    build: ./report
     image: ghcr.io/dorjoohover/hire_report:dev
     restart: always
     env_file:
@@ -149,23 +142,15 @@ services:
     labels:
       - "traefik.enable=true"
       - "com.centurylinklabs.watchtower.enable=true"
-
-      # ROUTER
       - "traefik.http.routers.report.rule=Host(`report.hire-test.cloud`)"
       - "traefik.http.routers.report.entrypoints=websecure"
       - "traefik.http.routers.report.tls.certresolver=myresolver"
-      - "traefik.http.routers.report.middlewares=report-strip"
-
-      # STRIP /report  ->  /
-      - "traefik.http.middlewares.report-strip.stripprefix.prefixes=/report"
-
-      # SERVICE
       - "traefik.http.services.report.loadbalancer.server.port=4000"
   web:
     image: ghcr.io/dorjoohover/hire_web:dev
     restart: always
     env_file:
-      - .env
+      - ${ENV_FILE}
     environment:
       NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
     labels:
@@ -175,10 +160,10 @@ services:
       - "traefik.http.routers.web.tls.certresolver=myresolver"
       - "traefik.http.services.web.loadbalancer.server.port=3000"
   admin:
-    image: ghcr.io/dorjoohover/hire_web:dev
+    image: ghcr.io/dorjoohover/hire_admin:dev
     restart: always
     env_file:
-      - .env
+      - ${ENV_FILE}
     environment:
       NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
     labels:
