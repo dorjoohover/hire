@@ -77,9 +77,9 @@ services:
       - ${ENV_FILE}
     environment:
       PORT: ${CORE_PORT}
-      DATABASE_URL: ${CORE_DATABASE_URL}
-      REDIS_HOST: ${CORE_REDIS_HOST}
-      REDIS_PORT: ${CORE_REDIS_PORT}
+      DATABASE_URL: ${DATABASE_URL}
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
 
       # AWS (shared)
       AWS_ACCESS_KEY: ${AWS_ACCESS_KEY}
