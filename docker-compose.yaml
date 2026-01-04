@@ -95,7 +95,7 @@ services:
       - "traefik.http.routers.report.tls.certresolver=myresolver"
       - "traefik.http.services.report.loadbalancer.server.port=4000"
   web:
-    image: ghcr.io/dorjoohover/hire_web:dev
+    image: ghcr.io/usukhbaya12/hire1.0:dev
     restart: always
     env_file:
       - ${ENV_FILE}
@@ -106,7 +106,7 @@ services:
       - "traefik.http.routers.web.tls.certresolver=myresolver"
       - "traefik.http.services.web.loadbalancer.server.port=3000"
   admin:
-    image: ghcr.io/dorjoohover/hire_admin:dev
+    image: ghcr.io/usukhbaya12/hire-admin1.0:dev
     restart: always
     env_file:
       - ${ENV_FILE}
