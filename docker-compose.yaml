@@ -72,7 +72,7 @@ services:
   core:
     build: ./core
     restart: always
-    image: ghcr.io/dorjoohover/hire_backend_core:dev
+    image: ghcr.io/dorjoohover/hire_backend_core:test
     environment:
       PORT: 5000
       DATABASE_URL: postgres://dorjoo:dorjooX0@postgres:5432/hire
@@ -126,7 +126,7 @@ services:
       CORE: https://hire-test.cloud/api/api/v1
       LOG_DIR: /app/logs
       REPORT_PATH: D:\\projects\\ufe\\hire\\backend\\report\\uploads
-    image: ghcr.io/dorjoohover/hire_report:dev
+    image: ghcr.io/dorjoohover/hire_report:test
 
     depends_on:
       - postgres
