@@ -70,7 +70,6 @@ services:
   # CORE BACKEND
   # ------------------------
   core:
-    build: ./core
     restart: always
     image: ghcr.io/dorjoohover/hire_backend_core:test
     environment:
@@ -112,7 +111,6 @@ services:
   # REPORT BACKEND
   # ------------------------
   report:
-    build: ./report
     restart: always
     environment:
       PORT: 4000
