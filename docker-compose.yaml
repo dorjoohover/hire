@@ -1,7 +1,7 @@
 services:
 
   watchtower:
-    image: ghcr.io/containrrr/watchtower:latest
+    image: ghcr.io/containrrr/watchtower:1.7.1
     restart: always
     command:
       - "--label-enable"
