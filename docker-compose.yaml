@@ -81,6 +81,7 @@ services:
       - "traefik.http.routers.core.entrypoints=websecure"
       - "traefik.http.routers.core.tls.certresolver=myresolver"
       - "traefik.http.services.core.loadbalancer.server.port=5000"
+      - "com.centurylinklabs.watchtower.enable=true"
 
 
   # ------------------------
@@ -103,6 +104,7 @@ services:
       - "traefik.http.routers.report.entrypoints=websecure"
       - "traefik.http.routers.report.tls.certresolver=myresolver"
       - "traefik.http.services.report.loadbalancer.server.port=4000"
+      - "com.centurylinklabs.watchtower.enable=true"
   web:
     image: ghcr.io/usukhbaya12/hire-web:dev
     restart: always
@@ -114,6 +116,7 @@ services:
       - "traefik.http.routers.web.entrypoints=websecure"
       - "traefik.http.routers.web.tls.certresolver=myresolver"
       - "traefik.http.services.web.loadbalancer.server.port=3000"
+      - "com.centurylinklabs.watchtower.enable=true"
   admin:
     image: ghcr.io/usukhbaya12/hire-admin:dev
     restart: always
@@ -126,6 +129,7 @@ services:
       - "traefik.http.routers.admin.entrypoints=websecure"
       - "traefik.http.routers.admin.tls.certresolver=myresolver"
       - "traefik.http.services.admin.loadbalancer.server.port=3001"
+      - "com.centurylinklabs.watchtower.enable=true"
 volumes:
   pgdata:
   redisdata:
